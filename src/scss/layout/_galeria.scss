@@ -1,0 +1,86 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.galeria{
+    @include m.contenedor;
+
+    &-imagenes{
+        @include m.grid(1, 1rem);
+
+        @include m.telefono{
+            @include m.grid(2, 1rem);
+        }
+
+        @include m.tablet{
+            @include m.grid(3, 1rem);
+        }
+
+        @include m.desktop{
+            @include m.grid(4, 2rem);
+        }
+
+        img{
+            //height: 100%;
+            //o tambien lo podemos hacer:
+            height: 20rem;
+            object-fit: cover;
+        }
+    }
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(v.$negro, 0.5);
+
+    //Lo siguiente me permite centrar el contenido del modal
+    display: grid;
+    place-items: center;
+
+    //Usamos animaciones para abrir y cerrar el modal
+    animation: abrirModal ease-in 0.5s;
+
+    //Esto me permite agarrar la clase con JavaScript y poder cerrar el modal con la animación
+    &.cerrarModal{
+        animation: cerrarModal ease-out 0.5s;
+    }
+
+
+    img{
+        max-width: 80rem;
+    }
+}
+
+.btn-cerrar{
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    //centro el contenido del botón
+    display: grid;
+    place-items: center;
+    background-color: v.$blanco;
+    font-weight: 700;
+    color: v.$negro;
+}
+
+
+//Vamos a crear algunas animaciones para abrir y cerrar el modal
+@keyframes abrirModal{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+        
+    }
+}
+
+@keyframes cerrarModal{
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        
+    }
+}
