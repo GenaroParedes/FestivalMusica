@@ -26,7 +26,8 @@ function crearGaleria(){
 
     for (let i = 1; i <= cantidadImagenes; i++) {
         const imagen = document.createElement('IMG');
-        imagen.src = `src/img/img/full/${i}.jpg`;
+        imagen.loading = 'lazy';
+        imagen.src = `src/img/gallery/thumb/${i}.jpg`;
         imagen.alt = 'imagen galeria';
         
         //Tenemos que detectar cual imagen se esta seleccionando
@@ -40,7 +41,7 @@ function crearGaleria(){
 
 function mostrarImagen(i) {
     const imagen = document.createElement('IMG');
-    imagen.src = `src/img/img/full/${i}.jpg`;
+    imagen.src = `src/img/gallery/full/${i}.jpg`;
     imagen.alt = 'imagen galeria';
 
     //Generar modal
